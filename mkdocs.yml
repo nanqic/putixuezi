@@ -25,6 +25,7 @@ theme:
   features:
     - navigation.sections
     - navigation.prune
+    - navigation.footer
     - navigation.top
     - navigation.tracking
     - navigation.indexes
