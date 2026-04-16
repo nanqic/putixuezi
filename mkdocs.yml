@@ -30,13 +30,7 @@ theme:
     - navigation.indexes
     - navigation.path
     - toc.follow
-    - search.suggest
-    - search.highlight
     - content.code.copy
-plugins:
-  - search:
-      lang:
-        - zh
 markdown_extensions:
   - admonition
   - attr_list
