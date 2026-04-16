@@ -77,6 +77,16 @@
   white-space: nowrap;
 }
 
+.md-path__item:not(:first-child) {
+  align-items: center;
+}
+
+.md-path__item:not(:first-child)::before {
+  display: inline-block;
+  flex: 0 0 0.8rem;
+  vertical-align: middle;
+}
+
 @media screen and (min-width: 1220px) {
   .md-grid {
     max-width: 84rem;
