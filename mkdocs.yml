@@ -35,7 +35,8 @@ plugins:
   - search:
       lang:
         - zh
-        - en
+      prebuild_index: true
+      indexing: sections
 markdown_extensions:
   - admonition
   - attr_list
