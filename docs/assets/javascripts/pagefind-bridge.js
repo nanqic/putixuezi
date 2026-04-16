@@ -142,6 +142,17 @@
 
     var initialText = (metaEl.textContent || "").trim() || "输入以开始搜索";
     var timer = null;
+    var isComposing = false;
+
+    function scheduleSearch(queryValue) {
+      state.token += 1;
+      var currentToken = state.token;
+      if (timer) clearTimeout(timer);
+
+      timer = setTimeout(function () {
+        runSearch(queryValue, currentToken);
+      }, 180);
+    }
 
     async function runSearch(rawQuery, token) {
       var query = rawQuery.trim();
@@ -167,17 +178,33 @@
           return;
         }
 
-        var limited = resultEntries.slice(0, 50);
-        var docs = await Promise.all(
+        var limited = resultEntries.slice(0, 20);
+        setMeta(metaEl, "正在加载结果...");
+
+        var settled = await Promise.allSettled(
           limited.map(function (entry) {
             return entry.data();
           })
         );
+        var docs = settled
+          .filter(function (item) {
+            return item.status === "fulfilled" && item.value;
+          })
+          .map(function (item) {
+            return item.value;
+          });
 
         if (token !== state.token) return;
 
+        if (!docs.length) {
+          clearResults(listEl);
+          setMeta(metaEl, "找到结果，但详情加载失败，请重试");
+          return;
+        }
+
         renderItems(listEl, docs);
-        setMeta(metaEl, "找到 " + resultEntries.length + " 条结果");
+        var suffix = resultEntries.length > docs.length ? "（显示前 " + docs.length + " 条）" : "";
+        setMeta(metaEl, "找到 " + resultEntries.length + " 条结果" + suffix);
       } catch (error) {
         if (token !== state.token) return;
         clearResults(listEl);
@@ -186,14 +213,18 @@
       }
     }
 
-    queryEl.addEventListener("input", function () {
-      state.token += 1;
-      var currentToken = state.token;
-      if (timer) clearTimeout(timer);
+    queryEl.addEventListener("compositionstart", function () {
+      isComposing = true;
+    });
 
-      timer = setTimeout(function () {
-        runSearch(queryEl.value, currentToken);
-      }, 120);
+    queryEl.addEventListener("compositionend", function () {
+      isComposing = false;
+      scheduleSearch(queryEl.value);
+    });
+
+    queryEl.addEventListener("input", function () {
+      if (isComposing) return;
+      scheduleSearch(queryEl.value);
     });
 
     form.addEventListener("reset", function () {
