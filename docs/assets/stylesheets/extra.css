@@ -67,6 +67,16 @@
   border-radius: 999px;
 }
 
+.md-search-result__breadcrumb {
+  color: var(--md-default-fg-color--light);
+  font-size: 0.62rem;
+  line-height: 1.25;
+  margin: 0 0 0.15rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 @media screen and (min-width: 1220px) {
   .md-grid {
     max-width: 84rem;

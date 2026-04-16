@@ -3,6 +3,7 @@ docs_dir: docs
 theme:
   name: material
   language: zh
+  custom_dir: docs/overrides
   font: false
   icon:
     logo: material/book-open-variant
@@ -27,6 +28,7 @@ theme:
     - navigation.top
     - navigation.tracking
     - navigation.indexes
+    - navigation.path
     - toc.follow
     - search.suggest
     - search.highlight
@@ -35,8 +37,6 @@ plugins:
   - search:
       lang:
         - zh
-      prebuild_index: true
-      indexing: sections
 markdown_extensions:
   - admonition
   - attr_list
@@ -45,7 +45,7 @@ markdown_extensions:
   - md_in_html
   - toc:
       permalink: true
-      toc_depth: 3
+      toc_depth: 6
   - pymdownx.details
   - pymdownx.superfences
   - pymdownx.highlight:
@@ -57,6 +57,7 @@ extra_css:
   - assets/stylesheets/extra.css
 extra_javascript:
   - assets/javascripts/header-home-link.js
+  - assets/javascripts/pagefind-bridge.js
 nav:
   - 菩提学子: index.md
   - 传承上师:
@@ -1115,7 +1116,7 @@ nav:
           - 018举办观音法会，救度汶川灾民2008.5.24: archive/shang-shi-kai-shi/wang-luo-kai-shi/018-ju-ban-guan-yin-fa-hui-jiu-du-wen-chuan-zai-min-2008.5.24.md
           - 019 2008金刚萨埵法会开示2008.6.7: archive/shang-shi-kai-shi/wang-luo-kai-shi/019-2008-jin-gang-sa-duo-fa-hui-kai-shi-2008.6.7.md
           - 019第一场《生生世世摄受愿文》传讲2017.12.2-01: archive/shang-shi-kai-shi/wang-luo-kai-shi/019-di-yi-chang-sheng-sheng-shi-shi-she-shou-yuan-wen-chuan-jiang-2017.12.201.md
-          - 019第二场《四臂观音修法·如意宝珠》传讲2017.12.2\_02: archive/shang-shi-kai-shi/wang-luo-kai-shi/019-di-er-chang-si-bi-guan-yin-xiu-fa-ru-yi-bao-zhu-chuan-jiang-2017.12.202.md
+          - 019第二场《四臂观音修法·如意宝珠》传讲2017.12.2_02: archive/shang-shi-kai-shi/wang-luo-kai-shi/019-di-er-chang-si-bi-guan-yin-xiu-fa-ru-yi-bao-zhu-chuan-jiang-2017.12.202.md
           - 020动中禅：与生活共舞2017.12.16: archive/shang-shi-kai-shi/wang-luo-kai-shi/020-dong-zhong-chan-yu-sheng-huo-gong-wu-2017.12.16.md
           - 021修学佛法要有勇气2008.8.30: archive/shang-shi-kai-shi/wang-luo-kai-shi/021-xiu-xue-fo-fa-yao-you-yong-qi-2008.8.30.md
           - 025及时学佛，岁月不待2009.4.12: archive/shang-shi-kai-shi/wang-luo-kai-shi/025-ji-shi-xue-fo-sui-yue-bu-dai-2009.4.12.md
@@ -1542,7 +1543,7 @@ nav:
           - 圣大乘临终智慧经: refs/fen-lei-yue-du/untitled/sheng-da-cheng-lin-zhong-zhi-hui-jing.md
           - 圣大乘金子经: refs/fen-lei-yue-du/untitled/sheng-da-cheng-jin-zi-jing.md
           - 大势至菩萨念佛圆通章: refs/fen-lei-yue-du/untitled/da-shi-zhi-pu-sa-nian-fo-yuan-tong-zhang.md
-          - 大圆满心性休息颂\(前八品\): refs/fen-lei-yue-du/untitled/da-yuan-man-xin-xing-xiu-xi-song-qian-ba-pin.md
+          - 大圆满心性休息颂（前八品）: refs/fen-lei-yue-du/untitled/da-yuan-man-xin-xing-xiu-xi-song-qian-ba-pin.md
           - 定解宝灯论: refs/fen-lei-yue-du/untitled/ding-jie-bao-deng-lun.md
           - 快乐之歌: refs/fen-lei-yue-du/untitled/kuai-le-zhi-ge.md
           - 摩邓女经: refs/fen-lei-yue-du/untitled/mo-deng-nv-jing.md
@@ -2015,7 +2016,7 @@ nav:
           - 佛教新闻：精神病医生结合佛教理念治愈病人: refs/zbfy/fo-jiao-xin-wen-jing-shen-bing-yi-sheng-jie-he-fo-jiao-li-nian-zhi-yu-bing-ren.md
           - 佛教新闻：驱离孤独的正念冥想: refs/zbfy/fo-jiao-xin-wen-qu-li-gu-du-de-zheng-nian-ming-xiang.md
           - 佛教是一种教育，不是宗教: refs/zbfy/fo-jiao-shi-yi-zhong-jiao-yu-bu-shi-zong-jiao.md
-          - 佛教现代主义 \(2\): refs/zbfy/fo-jiao-xian-dai-zhu-yi-2.md
+          - 佛教现代主义 （2）: refs/zbfy/fo-jiao-xian-dai-zhu-yi-2.md
           - 佛教现代主义: refs/zbfy/fo-jiao-xian-dai-zhu-yi.md
           - 佛教现代化的困境——论当前的时代背景及其对佛教的挑战: refs/zbfy/fo-jiao-xian-dai-hua-de-kun-jing-lun-dang-qian-de-shi-dai-bei-jing-ji-qi-dui-fo-jiao-de-tiao-zhan.md
           - 佛教生活方式越来越流行: refs/zbfy/fo-jiao-sheng-huo-fang-shi-yue-lai-yue-liu-hang.md
@@ -2271,14 +2272,14 @@ nav:
           - 每天5分钟让你更幸福: refs/zbfy/mei-tian-5-fen-zhong-rang-ni-geng-xing-fu.md
           - 活在不喜欢的当下: refs/zbfy/huo-zai-bu-xi-huan-de-dang-xia.md
           - 活在当下能让你成为更好的家长吗？: refs/zbfy/huo-zai-dang-xia-neng-rang-ni-cheng-wei-geng-hao-de-jia-chang-ma.md
-          - 测量无量心对佛教慈悲喜舍自他四无量心\(SOFI\)量表的开发和初步验证: refs/zbfy/ce-liang-wu-liang-xin-dui-fo-jiao-ci-bei-xi-she-zi-ta-si-wu-liang-xin-sofi-liang-biao-de-kai-fa-he-c.md
+          - 测量无量心对佛教慈悲喜舍自他四无量心（SOFI）量表的开发和初步验证: refs/zbfy/ce-liang-wu-liang-xin-dui-fo-jiao-ci-bei-xi-she-zi-ta-si-wu-liang-xin-sofi-liang-biao-de-kai-fa-he-c.md
           - 深呼吸：验证禅修的利益: refs/zbfy/shen-hu-xi-yan-zheng-chan-xiu-de-li-yi.md
           - 灵魂的程式: refs/zbfy/ling-hun-de-cheng-shi.md
           - 爱因斯坦对素食及生命意义的思考: refs/zbfy/ai-yin-si-tan-dui-su-shi-ji-sheng-ming-yi-yi-de-si-kao.md
           - 爱是通向未来的纽带: refs/zbfy/ai-shi-tong-xiang-wei-lai-de-niu-dai.md
           - 物理和生物现象中的“无我”: refs/zbfy/wu-li-he-sheng-wu-xian-xiang-zhong-de-wu-wo.md
           - 物理学认知的异同——美国大学生与藏传佛教僧侣: refs/zbfy/wu-li-xue-ren-zhi-de-yi-tong-mei-guo-da-xue-sheng-yu-cang-chuan-fo-jiao-seng-lv.md
-          - 物质的心性属性 \(2\): refs/zbfy/wu-zhi-de-xin-xing-shu-xing-2.md
+          - 物质的心性属性 （2）: refs/zbfy/wu-zhi-de-xin-xing-shu-xing-2.md
           - 物质的心性属性：贝尔定理——为武断的“中道”怀疑论敲起警钟，为“体验形而上学”和“量子心性”而鸣（2）: refs/zbfy/wu-zhi-de-xin-xing-shu-xing-bei-er-ding-li-wei-wu-duan-de-zhong-dao-huai-yi-lun-qiao-qi-jing-zhong-w.md
           - 物质的心性属性: refs/zbfy/wu-zhi-de-xin-xing-shu-xing.md
           - 现代宇宙学和佛教: refs/zbfy/xian-dai-yu-zhou-xue-he-fo-jiao.md

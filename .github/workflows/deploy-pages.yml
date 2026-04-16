@@ -38,6 +38,14 @@ jobs:
       - name: Build MkDocs
         run: mkdocs build --clean
 
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Build Pagefind Index
+        run: npx --yes pagefind --site site --output-subdir pagefind
+
       - name: Upload Pages Artifact
         uses: actions/upload-pages-artifact@v3
         with:
