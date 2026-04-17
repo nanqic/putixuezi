@@ -44,15 +44,14 @@
 }
 
 .md-main__inner {
-  margin-top: 0.7rem;
+  margin-top: 0.2rem;
+  padding-top: 0
 }
 
 .md-content__inner {
-  background: var(--lsyh-paper-bg);
   border: 1px solid var(--lsyh-paper-border);
   border-radius: var(--lsyh-radius);
   box-shadow: var(--lsyh-paper-shadow);
-  padding: 1.1rem 1.4rem;
 }
 
 .md-typeset {
@@ -275,6 +274,7 @@
 
   .md-content {
     max-width: 60rem;
+    background: var(--lsyh-paper-bg);
   }
 }
 
@@ -283,7 +283,6 @@
     border: 0;
     border-radius: 0;
     box-shadow: none;
-    padding: 0.9rem 0.1rem;
   }
 
   [data-md-color-scheme="slate"] .md-content__inner {
