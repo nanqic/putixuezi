@@ -1,5 +1,6 @@
 :root {
   --lsyh-radius: 14px;
+  --lsyh-typeset-font-size: 18px;
 }
 
 [data-md-color-scheme="default"] {
@@ -44,6 +45,10 @@
   padding: 1.1rem 1.4rem;
 }
 
+.md-typeset {
+  font-size: var(--lsyh-typeset-font-size);
+}
+
 .md-typeset h1 {
   border-bottom: 2px solid var(--lsyh-h1-line);
   margin-bottom: 1rem;
@@ -67,6 +72,84 @@
   border-radius: 999px;
 }
 
+.lsyh-font-btn[disabled] {
+  opacity: 0.45;
+  pointer-events: none;
+}
+
+#pagefind-search .pagefind-ui {
+  --pagefind-ui-font: var(--md-text-font-family);
+}
+
+#pagefind-search .pagefind-ui__result-nested {
+  display: none;
+}
+
+[data-md-color-scheme="default"] .md-typeset mark.lsyh-inline-highlight {
+  background: #ffd98a;
+  color: #2d2313;
+  border-radius: 0.2rem;
+  padding: 0 0.2em;
+}
+
+[data-md-color-scheme="slate"] .md-typeset mark.lsyh-inline-highlight {
+  background: #ffd28f;
+  color: #1b2432;
+  border-radius: 0.2rem;
+  padding: 0 0.2em;
+}
+
+[data-md-color-scheme="slate"] #pagefind-search .pagefind-ui {
+  --pagefind-ui-primary: #f3ca8c;
+  --pagefind-ui-text: #eee8df;
+  --pagefind-ui-background: #1f2733;
+  --pagefind-ui-border: #4f5f78;
+  --pagefind-ui-tag: #2d3a4d;
+}
+
+[data-md-color-scheme="slate"] #pagefind-search .pagefind-ui__search-input {
+  color: #f4efe7;
+  border-color: #607290;
+}
+
+[data-md-color-scheme="slate"] #pagefind-search .pagefind-ui__search-input::placeholder {
+  color: #b8c4d7;
+  opacity: 0.75;
+}
+
+[data-md-color-scheme="slate"] #pagefind-search .pagefind-ui__search-clear,
+[data-md-color-scheme="slate"] #pagefind-search .pagefind-ui__message,
+[data-md-color-scheme="slate"] #pagefind-search .pagefind-ui__result-excerpt,
+[data-md-color-scheme="slate"] #pagefind-search .pagefind-ui__result-tag {
+  color: #dde4ef;
+}
+
+[data-md-color-scheme="slate"] #pagefind-search .pagefind-ui__result-link {
+  color: #ffe1a6;
+}
+
+[data-md-color-scheme="slate"] #pagefind-search .pagefind-ui__result-link:hover {
+  color: #fff2cf;
+}
+
+[data-md-color-scheme="slate"] #pagefind-search .pagefind-ui mark {
+  background: #ffd28f;
+  border-radius: 0.18rem;
+  color: #1b2432;
+  padding: 0 0.2em;
+}
+
+[data-md-color-scheme="slate"] #pagefind-search .pagefind-ui__button {
+  border-color: #607290;
+  color: #f7d9a4;
+}
+
+[data-md-color-scheme="slate"] #pagefind-search .pagefind-ui__button:hover {
+  background: #2a3546;
+  border-color: #7d90ad;
+  color: #ffebc4;
+}
+
 .md-search-result__breadcrumb {
   color: var(--md-default-fg-color--light);
   font-size: 0.62rem;
@@ -85,6 +168,11 @@
   display: inline-block;
   flex: 0 0 0.8rem;
   vertical-align: middle;
+}
+
+.md-path {
+  padding-top: 0.1rem;
+  margin-bottom: 0.3rem;
 }
 
 @media screen and (min-width: 1220px) {

@@ -44,6 +44,14 @@ mkdocs serve
 mkdocs build
 ```
 
+## 编译并运行
+
+```bash
+python3 -m mkdocs build --clean
+npx --yes pagefind --site site --output-subdir pagefind
+python3 -m http.server 8000 -d site
+```
+
 默认输出目录：
 
 - `site/`
