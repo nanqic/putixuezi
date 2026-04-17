@@ -14,20 +14,63 @@
     );
   }
 
+  function readPaletteColor(input) {
+    if (!input) return null;
+    return {
+      media: input.getAttribute("data-md-color-media"),
+      scheme: input.getAttribute("data-md-color-scheme"),
+      primary: input.getAttribute("data-md-color-primary"),
+      accent: input.getAttribute("data-md-color-accent")
+    };
+  }
+
+  function persistPalette(color) {
+    if (!color || typeof window.__md_set !== "function") return;
+    try {
+      window.__md_set("__palette", { color: color });
+    } catch (_err) {
+      // Ignore persistence failures.
+    }
+  }
+
+  function applyPaletteColor(color) {
+    if (!color) return;
+    Object.keys(color).forEach(function (key) {
+      if (color[key] !== null && color[key] !== undefined) {
+        document.body.setAttribute("data-md-color-" + key, color[key]);
+      }
+    });
+    persistPalette(color);
+  }
+
+  function pickNextPaletteInput(inputs) {
+    if (!inputs.length) return null;
+
+    var scheme = currentScheme();
+    var current = inputs.find(function (input) {
+      return input.getAttribute("data-md-color-scheme") === scheme;
+    });
+    if (!current) {
+      current = inputs.find(function (input) {
+        return input.checked;
+      });
+    }
+    if (!current) return inputs[0];
+
+    var currentIndex = inputs.indexOf(current);
+    if (currentIndex < 0) return inputs[0];
+    return inputs[(currentIndex + 1) % inputs.length];
+  }
+
   function togglePalette() {
     var inputs = getPaletteInputs();
     if (inputs.length < 2) return;
 
-    var current = inputs.find(function (input) {
-      return input.checked;
-    });
-    if (!current) current = inputs[0];
-
-    var currentIndex = inputs.indexOf(current);
-    var next = inputs[(currentIndex + 1) % inputs.length];
+    var next = pickNextPaletteInput(inputs);
     if (!next) return;
 
     next.checked = true;
+    applyPaletteColor(readPaletteColor(next));
     next.dispatchEvent(new Event("change", { bubbles: true }));
     next.dispatchEvent(new Event("input", { bubbles: true }));
   }
@@ -68,35 +111,42 @@
     var title = document.querySelector('.md-nav--primary .md-nav__title[for="__drawer"]');
     if (!title) return;
 
-    var existing = title.querySelector(".lsyh-drawer-controls");
-    if (existing) {
-      updateThemeButton(existing.querySelector(".lsyh-drawer-theme-btn"));
-      return;
+    var logo = title.querySelector(".md-logo");
+    if (logo) {
+      logo.remove();
+    }
+
+    var themeBtn = title.querySelector(".lsyh-drawer-theme-left-btn");
+    if (!themeBtn) {
+      themeBtn = makeButton("lsyh-drawer-theme-left-btn", "切换主题", MOON_SVG);
+      themeBtn.addEventListener("click", swallowLabelClick);
+      themeBtn.addEventListener("click", function () {
+        togglePalette();
+        updateThemeButton(themeBtn);
+      });
+      title.insertBefore(themeBtn, title.firstChild);
     }
 
     var controls = document.createElement("span");
-    controls.className = "lsyh-drawer-controls";
+    var existing = title.querySelector(".lsyh-drawer-controls");
+    if (existing) {
+      controls = existing;
+      controls.innerHTML = "";
+    } else {
+      controls.className = "lsyh-drawer-controls";
+      title.appendChild(controls);
+    }
 
-    var themeBtn = makeButton("lsyh-drawer-theme-btn", "切换主题", MOON_SVG);
     var minusBtn = makeButton("lsyh-drawer-font-btn", "缩小字体", MINUS_SVG);
     minusBtn.setAttribute("data-lsyh-font-step", "-1");
 
     var plusBtn = makeButton("lsyh-drawer-font-btn", "放大字体", PLUS_SVG);
     plusBtn.setAttribute("data-lsyh-font-step", "1");
 
-    [themeBtn, minusBtn, plusBtn].forEach(function (button) {
+    [minusBtn, plusBtn].forEach(function (button) {
       button.addEventListener("click", swallowLabelClick);
-      button.addEventListener("mousedown", swallowLabelClick);
-      button.addEventListener("touchstart", swallowLabelClick, { passive: false });
       controls.appendChild(button);
     });
-
-    themeBtn.addEventListener("click", function () {
-      togglePalette();
-      updateThemeButton(themeBtn);
-    });
-
-    title.appendChild(controls);
     updateThemeButton(themeBtn);
 
     if (window.__lsyhRefreshFontButtons) {
@@ -111,7 +161,7 @@
     document.body.dataset.lsyhThemeObserverBound = "1";
 
     var observer = new MutationObserver(function () {
-      var btn = document.querySelector(".lsyh-drawer-theme-btn");
+      var btn = document.querySelector(".lsyh-drawer-theme-left-btn");
       updateThemeButton(btn);
     });
 

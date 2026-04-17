@@ -33,6 +33,12 @@ source ~/.zshrc
 mkdocs serve
 ```
 
+## 增量热重载
+
+```bash
+mkdocs serve --dirtyreload
+```
+
 访问：
 
 - <http://127.0.0.1:8000>
