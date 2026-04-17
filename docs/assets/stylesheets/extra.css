@@ -72,6 +72,70 @@
   border-radius: 999px;
 }
 
+@media screen and (max-width: 76.2344em) {
+  .md-nav--primary .md-nav__title[for="__drawer"] {
+    align-items: center;
+    display: flex;
+    gap: 0.5rem;
+    height: auto;
+    line-height: 1.25;
+    min-height: 3.2rem;
+    padding: 0.55rem 0.8rem;
+  }
+
+  .md-nav--primary .md-nav__title[for="__drawer"] .md-logo {
+    display: inline-flex;
+    flex: 0 0 auto;
+    height: 1.7rem;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+    position: static;
+    width: 1.7rem;
+  }
+
+  .md-nav--primary .md-nav__title[for="__drawer"] .md-logo svg,
+  .md-nav--primary .md-nav__title[for="__drawer"] .md-logo img {
+    height: 1.55rem;
+    width: auto;
+  }
+
+  .md-nav--primary .md-nav__title[for="__drawer"] .lsyh-drawer-controls {
+    align-items: center;
+    display: inline-flex;
+    gap: 0.15rem;
+    margin-left: auto;
+    position: relative;
+    z-index: 2;
+  }
+
+  .md-nav--primary .md-nav__title[for="__drawer"] .lsyh-drawer-btn {
+    align-items: center;
+    border-radius: 999px;
+    color: inherit;
+    display: inline-flex;
+    height: 1.9rem;
+    justify-content: center;
+    opacity: 0.95;
+    width: 1.9rem;
+  }
+
+  .md-nav--primary .md-nav__title[for="__drawer"] .lsyh-drawer-btn svg {
+    height: 1.15rem;
+    width: 1.15rem;
+  }
+
+  .md-nav--primary .md-nav__title[for="__drawer"] .lsyh-drawer-btn:hover {
+    background: rgba(255, 255, 255, 0.14);
+    opacity: 1;
+  }
+
+  .md-header .lsyh-font-btn,
+  .md-header label.md-header__button.md-icon[for^="__palette_"] {
+    display: none;
+  }
+}
+
 .lsyh-font-btn[disabled] {
   opacity: 0.45;
   pointer-events: none;

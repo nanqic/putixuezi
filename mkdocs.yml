@@ -51,8 +51,8 @@ markdown_extensions:
 extra_css:
   - assets/stylesheets/extra.css
 extra_javascript:
-  - assets/javascripts/header-home-link.js
   - assets/javascripts/font-size-controls.js
+  - assets/javascripts/drawer-controls.js
   - assets/javascripts/pagefind-search-page.js
 nav:
   - 菩提学子: index.md
@@ -80,7 +80,7 @@ nav:
       - 《圣大解脱经》第9课: archive/update/sdjtj/sheng-da-jie-tuo-jing-jiang-jie-09.md
   - 《吉祥经》讲记: archive/update/jxj.md
   - 《摩邓女经》讲记: archive/update/mdnj.md
-  - 《传授菩萨戒》20200724笔录: archive/update/cspsj20200724.md
+  - 《传授菩萨戒》笔录: archive/update/cspsj20200724.md
   - 《地藏菩萨本愿经》讲记:
       - 《地藏菩萨本愿经》第1课: archive/update/dzj/dzj01.md
       - 《地藏菩萨本愿经》第2课: archive/update/dzj/dzj02.md

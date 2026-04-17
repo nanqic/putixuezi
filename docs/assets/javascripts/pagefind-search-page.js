@@ -259,9 +259,7 @@
     var value = String(text || "");
     if (!value) return value;
     return value
-      .replace(/(?:跳转至内容|Jump to content)\s*/gi, "")
       .replace(/(^|[\s>])(?:跳转至|Jump to)\s*/gi, "$1")
-      .replace(/¶/g, "")
       .replace(/\s{2,}/g, " ");
   }
 

@@ -99,7 +99,15 @@
     bindButtons();
   }
 
+  function refreshFontSizeControls() {
+    bindButtons();
+    updateButtons(getCurrentSize());
+  }
+
+  window.__lsyhRefreshFontButtons = refreshFontSizeControls;
+
   document.addEventListener("DOMContentLoaded", initFontSizeControls);
+  document.addEventListener("lsyh:font-controls-refresh", refreshFontSizeControls);
   if (window.document$ && typeof window.document$.subscribe === "function") {
     window.document$.subscribe(initFontSizeControls);
   }
