@@ -1,4 +1,4 @@
-# 菩提学子
+# 智悲学子
 
 本项目使用 **MkDocs + Material for MkDocs** 构建静态文档站。
 
