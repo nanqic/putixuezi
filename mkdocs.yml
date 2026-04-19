@@ -32,6 +32,8 @@ theme:
     - navigation.path
     - toc.follow
     - content.code.copy
+plugins:
+  - mermaid2
 markdown_extensions:
   - admonition
   - attr_list
@@ -42,7 +44,11 @@ markdown_extensions:
       permalink: true
       toc_depth: 6
   - pymdownx.details
-  - pymdownx.superfences
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
   - pymdownx.highlight:
       anchor_linenums: false
   - pymdownx.inlinehilite
@@ -285,8 +291,6 @@ nav:
           - 心经要义之辨析: archive/fo-jing-jiang-jie/sheng-ban-ruo-bo-luo-mi-duo-xin-jing-jiang-ji/xin-jing-yao-yi-zhi-bian-xi.md
           - 提问与解答: archive/fo-jing-jiang-jie/sheng-ban-ruo-bo-luo-mi-duo-xin-jing-jiang-ji/ti-wen-yu-jie-da.md
           - 新年寄语: archive/fo-jing-jiang-jie/sheng-ban-ruo-bo-luo-mi-duo-xin-jing-jiang-ji/xin-nian-ji-yu.md
-      - 《圣般若摄颂》讲解:
-          - Untitled: archive/fo-jing-jiang-jie/sheng-bo-ruo-she-song/untitled.md
   - 戒律讲解:
       - 《赞戒论》讲解:
           - 赞戒论讲解01: archive/jie-lv-jiang-jie/zan-jie-lun-jiang-jie/zan-jie-lun-jiang-jie-01.md
