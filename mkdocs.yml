@@ -2,6 +2,7 @@ site_name: 智悲学子
 docs_dir: docs
 not_in_nav: |
   /search.md
+plugins: []
 theme:
   name: material
   language: zh

@@ -3,6 +3,17 @@
   --lsyh-typeset-font-size: 20px;
 }
 
+/* 1. 将真实的 DOM 文本字号设为 0，让浏览器的搜索高亮宽度变成 0（不可见） */
+.md-header__topic:first-child .md-ellipsis {
+  font-size: 0 !important;
+}
+
+/* 2. 用伪元素把字重新显示出来。伪元素不在 DOM 树的文本节点内，浏览器原生搜索抓不到它 */
+.md-header__topic:first-child .md-ellipsis::after {
+  content: "智悲学子";
+  font-size: 0.9rem;
+}
+
 [data-md-color-scheme="default"] {
   --lsyh-paper-bg: #fffcf7;
   --lsyh-paper-border: #efe3cf;
