@@ -1,0 +1,18 @@
+{
+  "name": "putixuezi-search-api",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "node --env-file-if-exists=.env.local node_modules/wrangler/bin/wrangler.js dev",
+    "deploy": "node --env-file-if-exists=.env.local node_modules/wrangler/bin/wrangler.js deploy",
+    "tail": "node --env-file-if-exists=.env.local node_modules/wrangler/bin/wrangler.js tail",
+    "import": "node --env-file-if-exists=.env.local scripts/import.mjs",
+    "t2s": "node scripts/gen-t2s.mjs"
+  },
+  "devDependencies": {
+    "node-html-parser": "^9.0.6",
+    "opencc-js": "^1.0.5",
+    "wrangler": "^4.40.0"
+  }
+}

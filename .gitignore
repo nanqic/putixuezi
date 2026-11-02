@@ -1,3 +1,7 @@
 .DS_Store
 site/
-medias.json
+medias.json.env
+.env.local
+node_modules/
+/workers/*/.wrangler
+/workers/*/out/

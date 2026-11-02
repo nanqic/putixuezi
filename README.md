@@ -54,7 +54,6 @@ mkdocs build
 
 ```bash
 python3 -m mkdocs build --clean
-npx --yes pagefind --site site --output-subdir pagefind
 python3 -m http.server 8000 -d site
 ```
 
@@ -81,3 +80,7 @@ mkdocs build --site-dir site-output
 2. Material 的 MkDocs 2.0 警告
 
 当前属于上游兼容性提示，不影响你在 `mkdocs 1.x` 下构建本站。
+
+## 关键词搜索
+
+搜索页 `/search/` 调用 Cloudflare Worker（D1 数据库），不在构建时生成索引。内容更新后须重新导入，部署与导入步骤见 [workers/search-api/README.md](workers/search-api/README.md)。

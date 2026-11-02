@@ -65,7 +65,7 @@ extra_javascript:
   - assets/javascripts/mermaid-init.js
   - assets/javascripts/font-size-controls.js
   - assets/javascripts/drawer-controls.js
-  - assets/javascripts/pagefind-search-page.js
+  - assets/javascripts/keyword-search.js
   - assets/javascripts/media-player.js
 extra:
   generator: false

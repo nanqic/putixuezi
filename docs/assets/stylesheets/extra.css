@@ -185,14 +185,6 @@
   pointer-events: none;
 }
 
-#pagefind-search .pagefind-ui {
-  --pagefind-ui-font: var(--md-text-font-family);
-}
-
-#pagefind-search .pagefind-ui__result-nested {
-  display: none;
-}
-
 [data-md-color-scheme="default"] .md-typeset mark.lsyh-inline-highlight {
   background: #ffd98a;
   color: #2d2313;
@@ -205,61 +197,6 @@
   color: #1b2432;
   border-radius: 0.2rem;
   padding: 0 0.2em;
-}
-
-[data-md-color-scheme="slate"] #pagefind-search .pagefind-ui {
-  --pagefind-ui-primary: #f3ca8c;
-  --pagefind-ui-text: #eee8df;
-  --pagefind-ui-background: #1f2733;
-  --pagefind-ui-border: #4f5f78;
-  --pagefind-ui-tag: #2d3a4d;
-}
-
-[data-md-color-scheme="slate"] #pagefind-search .pagefind-ui__search-input {
-  color: #f4efe7;
-  border-color: #607290;
-}
-
-[data-md-color-scheme="slate"]
-  #pagefind-search
-  .pagefind-ui__search-input::placeholder {
-  color: #b8c4d7;
-  opacity: 0.75;
-}
-
-[data-md-color-scheme="slate"] #pagefind-search .pagefind-ui__search-clear,
-[data-md-color-scheme="slate"] #pagefind-search .pagefind-ui__message,
-[data-md-color-scheme="slate"] #pagefind-search .pagefind-ui__result-excerpt,
-[data-md-color-scheme="slate"] #pagefind-search .pagefind-ui__result-tag {
-  color: #dde4ef;
-}
-
-[data-md-color-scheme="slate"] #pagefind-search .pagefind-ui__result-link {
-  color: #ffe1a6;
-}
-
-[data-md-color-scheme="slate"]
-  #pagefind-search
-  .pagefind-ui__result-link:hover {
-  color: #fff2cf;
-}
-
-[data-md-color-scheme="slate"] #pagefind-search .pagefind-ui mark {
-  background: #ffd28f;
-  border-radius: 0.18rem;
-  color: #1b2432;
-  padding: 0 0.2em;
-}
-
-[data-md-color-scheme="slate"] #pagefind-search .pagefind-ui__button {
-  border-color: #607290;
-  color: #f7d9a4;
-}
-
-[data-md-color-scheme="slate"] #pagefind-search .pagefind-ui__button:hover {
-  background: #2a3546;
-  border-color: #7d90ad;
-  color: #ffebc4;
 }
 
 .md-search-result__breadcrumb {
@@ -313,4 +250,120 @@
     margin: 0 0.2rem;
     padding: 0.95rem 0.85rem;
   }
+}
+/* 关键词搜索（keyword-search.js） */
+.kw-search__form {
+  display: flex;
+  gap: 0.6rem;
+  margin: 0.5rem 0 1rem;
+}
+
+.kw-search__input {
+  flex: 1;
+  min-width: 0;
+  padding: 0.5rem 0.8rem;
+  font: inherit;
+  font-size: 0.85rem;
+  color: var(--md-default-fg-color);
+  background: var(--md-default-bg-color);
+  border: 1px solid var(--md-default-fg-color--lighter);
+  border-radius: 0.3rem;
+}
+
+.kw-search__input:focus {
+  outline: none;
+  border-color: var(--md-accent-fg-color);
+}
+
+.md-typeset .kw-search__button {
+  margin: 0;
+  padding: 0.4rem 1rem;
+}
+
+.kw-search__info {
+  color: var(--md-default-fg-color--light);
+  font-size: 0.75rem;
+  margin-bottom: 0.6rem;
+}
+
+.kw-search__facets {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-bottom: 1rem;
+}
+
+.kw-search__facet {
+  padding: 0.15rem 0.6rem;
+  font: inherit;
+  font-size: 0.7rem;
+  color: var(--md-default-fg-color--light);
+  background: transparent;
+  border: 1px solid var(--md-default-fg-color--lighter);
+  border-radius: 1rem;
+  cursor: pointer;
+}
+
+.kw-search__facet.is-active {
+  color: var(--md-primary-bg-color);
+  background: var(--md-primary-fg-color);
+  border-color: var(--md-primary-fg-color);
+}
+
+.kw-search__card {
+  padding: 0.8rem 0;
+  border-bottom: 1px solid var(--md-default-fg-color--lightest);
+}
+
+.kw-search__head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.2rem 0.8rem;
+  margin-bottom: 0.4rem;
+}
+
+.md-typeset .kw-search__title {
+  font-weight: 700;
+}
+
+.kw-search__meta {
+  color: var(--md-default-fg-color--light);
+  font-size: 0.7rem;
+}
+
+.md-typeset a.kw-search__line {
+  display: block;
+  margin: 0.3rem 0;
+  font-size: 0.75rem;
+  line-height: 1.7;
+  color: var(--md-default-fg-color);
+}
+
+.md-typeset a.kw-search__line:hover {
+  color: var(--md-accent-fg-color);
+}
+
+.kw-search__pager {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin: 1.2rem 0;
+}
+
+.md-typeset .kw-search__page {
+  margin: 0;
+  padding: 0.3rem 0.9rem;
+}
+
+.md-typeset .kw-search__page[disabled] {
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+.md-typeset .kw-search__target {
+  background: var(--md-accent-fg-color--transparent);
+  border-radius: 0.2rem;
+  outline: 0.3rem solid var(--md-accent-fg-color--transparent);
 }
