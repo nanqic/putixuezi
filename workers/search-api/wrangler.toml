@@ -8,8 +8,8 @@ workers_dev = true
 [[d1_databases]]
 binding = "DB"
 database_name = "putixuezi-search"
-# 首次执行 npx wrangler d1 create putixuezi-search 后，把输出的 database_id 填在这里
-database_id = "00000000-0000-0000-0000-000000000000"
+# 亚太区（--location=apac），国内访问延迟较低
+database_id = "05e4373a-b3c0-480e-9007-66d2b338f955"
 
 [vars]
 # 多个关键词须在同一篇文章中都出现；展示时优先显示在多少字以内同时出现的位置（规范化后的字数）
