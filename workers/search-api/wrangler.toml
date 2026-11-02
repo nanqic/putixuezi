@@ -2,8 +2,8 @@ name = "putixuezi-search"
 main = "src/index.js"
 compatibility_date = "2026-10-01"
 workers_dev = true
-# 绑定自定义域名时取消注释（域名须在同一 Cloudflare 账号下），并把 docs/search.md 中的 data-api 改为该域名
-# routes = [{ pattern = "searchapi.example.com", custom_domain = true }]
+# 自定义域名（docs/search.md 的 data-api 用它）；workers.dev 地址仍保留可用
+routes = [{ pattern = "happy-lamport.ningway.com", custom_domain = true }]
 
 [[d1_databases]]
 binding = "DB"
